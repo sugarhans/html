@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+    <style type="text/css">
+
+      *{
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #box{
+            background: url("images/01big.jpg") no-repeat top center;
+            width: 360px;
+            margin: 100px auto;
+            border: 1px solid gray;
+            padding-top: 360px;
+
+        }
+
+
+         img{
+            width: 70px;
+            height: 70px;
+             float: left;
+        }
+
+        #position{
+            height: 70px;
+            border-top: 1px solid gray;
+        }
+
+    </style>
+
+
+</head>
+
+
+
+<body>
+
+<script type="text/javascript">
+
+        function show( obj){
+            var b = document.getElementById("box");
+//        var position = document.getElementById(id);
+            b.style.backgroundImage = "url("+obj+")";
+
+    }
+
+
+
+</script>
+
+<div id="box">
+    <div id="position">
+        <img id="img1" onmouseover="show('images/01big.jpg')" src="images/01.jpg" alt="">
+        <img id="img2" onmouseover="show('images/02big.jpg')" src="images/02.jpg" alt="">
+        <img id="img3" onmouseover="show('images/03big.jpg')" src="images/03.jpg" alt="">
+        <img id="img4" onmouseover="show('images/04big.jpg')" src="images/04.jpg" alt="">
+        <img id="img5" onmouseover="show('images/05big.jpg')" src="images/05.jpg" alt="">
+    </div>
+
+
+</div>
+
+</body>
+</html>

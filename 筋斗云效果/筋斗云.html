@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>筋斗云</title>
+
+
+    <style>
+        body{
+            background-color: black;
+        }
+        #nav{
+            width: 800px;
+            height: 42px;
+            border-radius: 5px;
+            margin: 100px auto;
+            position: relative;
+            background: url("images/rss.png") no-repeat right center #fff;
+        }
+        #cloud{
+            width: 83px;
+            height: 42px;
+            position: absolute;
+            background: url("images/cloud.gif") no-repeat left top;
+            top:0;
+            left: 0;
+        }
+        ul{
+            position: absolute;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li{
+            list-style: none;
+            float: left;
+            width: 83px;
+            height: 42px;
+            line-height: 42px;
+            text-align: center;
+        }
+    </style>
+    <script>
+
+
+        window.onload=function () {
+            //缓动
+            var cloud = document.getElementById("cloud");
+            var leader = 0;
+            var target = 0;
+            setInterval(function () {
+                leader = leader + (target - leader)/10;
+                cloud.style.left = leader+"px";
+            },30);
+
+
+         var nav = document.getElementById("nav");
+         var ul = nav.children[1];
+         var lis = ul.children;
+         console.log(lis.length);
+         var current = 0;
+         for (var i = 0 ; i<lis.length;i++){
+             lis[i].onmouseover = function () {
+                 console.log(this.offsetLeft);
+                 target = this.offsetLeft;
+             }
+
+             lis[i].onmouseout = function () {
+                 console.log("onmouseup");
+                 target = current;
+             }
+
+             lis[i].onclick = function () {
+                 current = this.offsetLeft;
+             }
+         }
+        }
+
+    </script>
+
+</head>
+
+
+<body>
+
+<div id="nav">
+    <span id="cloud"></span>
+    <ul>
+        <li>筋斗云</li>
+        <li>筋斗云</li>
+        <li>筋斗云</li>
+        <li>筋斗云</li>
+        <li>筋斗云</li>
+        <li>筋斗云</li>
+        <li>筋斗云</li>
+        <li>筋斗云</li>
+        <li>筋斗云</li>
+    </ul>
+
+</div>
+
+
+
+</body>
+</html>

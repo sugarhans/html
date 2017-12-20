@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+         #fdj{
+             width: 350px;
+             height: 350px;
+             border: 1px solid #ccc;
+             margin: 100px;
+         }
+
+        #big{
+            position: absolute;
+            left: 360px;
+            top: 0;
+            width: 450px;
+            height: 450px;
+            border: 1px solid #cccccc;
+            overflow: hidden;
+            display: none;
+        }
+
+        #fdj{
+            position: relative;
+
+        }
+
+        #mark{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:0;
+            left: 0;
+            background: rgba(255,255,0,0.4);
+            cursor: move;
+            display: none;
+        }
+
+        #big img{
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+
+    </style>
+</head>
+
+<script>
+    window.onload = function () {
+        var  fdj = document.getElementById("fdj");
+        var small = fdj.children[0];
+        var big = fdj.children[1];
+        var mark = small.children[1];
+        var bigimg = big.children[0];
+        small.onmouseover = function () {
+            mark.style.display = "block"
+            big.style.display = "block"
+        }
+        small.onmouseout = function () {
+            mark.style.display = "none"
+            big.style.display = "none"
+        }
+
+        small.onmousemove = function (event) {
+            var event = event || window.event;
+            var  x = event.clientX - fdj.offsetLeft - mark.offsetWidth/2;
+            var  y = event.clientY - fdj.offsetTop - mark.offsetWidth/2;
+
+            if (x < 0){
+                x = 0;
+            }else if (x > fdj.offsetWidth - mark.offsetWidth){
+                x = fdj.offsetWidth -mark.offsetWidth;
+            }
+
+            if (y < 0){
+                y = 0;
+            }else if (y > fdj.offsetHeight - mark.offsetHeight){
+                y = fdj.offsetHeight -mark.offsetHeight;
+            }
+            mark.style.left = x +"px";
+            mark.style.top = y + "px";
+
+            bigimg.style.left = -x*450/350 +"px";
+            console.log(-x*450/350 +"px")
+            console.log(bigimg)
+            bigimg.style.top = -y*450/350 +"px";
+        }
+
+
+    }
+
+
+</script>
+
+<body>
+    <div id="fdj">
+        <div id="small">
+            <img src="images/001.jpg">
+            <div id="mark"></div>
+        </div>
+        <div id="big">
+            <img src="images/0001.jpg">
+            
+        </div>
+    </div>
+</body>
+</html>
