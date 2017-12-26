@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            margin: 100px;
+            width: 200px;
+            height: 300px;
+            border: 1px solid red;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #content{
+            position: absolute;
+            padding-right: 20px;
+        }
+
+        #scoll{
+            background-color: #cccccc;
+            width: 20px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        #bar{
+            width: 100%;
+            height: 30px;
+            border-radius: 5px;
+            position: absolute;
+            background-color: red;
+            right: 0;
+            top: 0;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var box = document.getElementById("box");
+            var content = box.children[0];
+            var scoll = box.children[1];
+            var bar = scoll.children[0];
+            //初始化滚动条的长度
+            bar.style.height = box.offsetHeight * box.offsetHeight/content.offsetHeight + "px";
+            //拖拽事件
+            bar.onmousedown = function (event) {
+                var event = event || window.event;
+                var that = this;
+                var top = event.clientY - this.offsetTop;
+                document.onmousemove = function (event) {
+                    var event = event || window.event;
+                    var distance = event.clientY - top;
+                    if (distance < 0 ){
+                        distance = 0 ;
+                    }else if(distance > box.offsetHeight - that.offsetHeight){
+                        distance = box.offsetHeight - that.offsetHeight;
+                    }
+                    that.style.top = distance+"px";
+                    //文字滚动
+                    console.log(content.offsetHeight +"   "+bar.offsetTop+"  "+box.offsetHeight+"  "+that.offsetHeight);
+                    var scollDistance = (content.offsetHeight-box.offsetHeight)*bar.offsetTop/(box.offsetHeight - that.offsetHeight);
+                    console.log(scollDistance);
+                    content.style.top = -scollDistance +"px";
+                    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                }
+            }
+
+            document.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        }
+
+
+    </script>
+</head>
+    <div id="box">
+        <div id="content">
+            垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容
+            垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容
+            垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容
+            垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容
+            垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容
+            垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容
+            垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容
+            垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容垂直滚动条内容
+        </div>
+
+        <div id="scoll">
+            <div id="bar"></div>
+        </div>
+    </div>
+<body>
+</body>
+</html>
