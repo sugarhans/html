@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        body{
+            height: 2000px;
+
+        }
+
+
+        #mask{
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;   /*半透明*/
+            filter: alpha(opacity = 40);  /*ie 6半透明*/
+            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        #show{
+            width: 300px;
+            height: 300px;
+            margin-left: -150px;
+            margin-top: -150px;
+            left: 50%;
+            top:50%;
+            background-color: white;
+            position: fixed;
+            display:none;
+        }
+
+
+    </style>
+</head>
+<script>
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+
+    window.onload = function () {
+
+     var   register =    document.getElementById("register");
+     var mask = $("mask");
+     var show = $("show");
+     register.onclick = function (event) {
+         var event = event || window.event;
+         mask.style.display = "block"
+         show.style.display = "block"
+         document.body.style.overflow = "hidden"
+         if(event && event.stopPropagation)
+         {
+             event.stopPropagation();
+         }
+         else
+         {
+             event.cancelBubble = true;
+         }
+
+     }
+    }
+
+
+    document.onclick = function (event) {
+        var targetId = event.target ? event.target.id : event.srcElement.id;
+        if (targetId != "show"){
+            mask.style.display = "none"
+            document.body.style.overflow = "visible "
+            show.style.display = "none"
+        }
+
+    }
+
+</script>
+
+<body>
+<a href="javascript:;">登录</a>
+<a href="javascript:;" id="register">注册</a>
+<div id="mask" ></div>
+<div id="show"></div>
+
+
+
+
+</body>
+</html>
