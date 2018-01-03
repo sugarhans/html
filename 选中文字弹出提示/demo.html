@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #part{
+            width: 300px;
+            height: 300px;
+            margin: 200px;
+            background: pink;
+        }
+
+        #prompt{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: 0px;
+            top:0px;
+            display:none;
+        }
+
+    </style>
+
+
+</head>
+
+<script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+    window.onload = function () {
+        var part  = $("part");
+        var prompt  = $("prompt");
+         part.onmouseup = function (event) {
+             console.log("onmouseup")
+             var scrollTop = window.pageYOffset || document.documentElement.scrollTop
+                 || document.body.scrollTop || 0;
+             var event =event||window.event;
+             var selection  = window.getSelection().toString();
+             if (selection){
+                 console.log("selection  "+selection)
+                 prompt.innerHTML = selection;
+                 prompt.style.left = event.clientX+"px";
+                 prompt.style.top = event.clientY+scrollTop+"px";
+                 prompt.style.display = "block";
+             }else {
+                 prompt.style.display = "none";
+             }
+
+         }
+
+         document.onmousedown = function () {
+             console.log("onclick");
+             var targetId = event.target ? event.target.id : event.srcElement.id;
+             if(targetId != "prompt"){
+                 $("prompt").style.display = "none";
+             }
+         }
+    }
+
+
+</script>
+
+<body>
+
+<div id="prompt"></div>
+
+<div id="part">
+    选中文字弹出提示    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+    选中文字弹出提示
+
+
+</div>
+
+
+</body>
+</html>
